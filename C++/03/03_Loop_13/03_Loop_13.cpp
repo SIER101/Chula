@@ -5,7 +5,8 @@ using namespace std;
 int main()
 {
     string w, s, a = "",c=" \"\'(),.";
-    getline(cin, w);
+    cin>>w;
+    cin.ignore();
     getline(cin, s);
     int i = 0, b = 0;
     while (i < s.length()-w.length()+1)
