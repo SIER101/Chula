@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 using namespace std;
 
 int main()
@@ -23,16 +22,16 @@ int main()
     }
     for (int i = 0; i < len; i++)
     {
-        b = d;
-        for (auto j : s)
+        b = d;//เริ่มบวกด้วยตัวทด
+        for (auto j : s)//วนลูปจากตัวแรกvectorถึงตัวท้าย
         {
-            if (j.length() - 1 < i)
+            if (j.length() - 1 < i)//ถ้าไม่มีหลักพอให้บวกก็ข้าม
                 continue;
-            b += j[(int)j.length() - i - 1] - '0';
+            b += j[(int)j.length() - i - 1] - '0';//บวกเลขหลักนั้น
         }
-        string e = to_string(b);
-        c += e[e.length() - 1];
-        d = b / 10;
+        string e = to_string(b);//เปลี่ยนเป็นstring
+        c += e[e.length() - 1];//บวกหลักท้าย
+        d = b / 10;//เก็บตัวทด
     }
     if (d != 0)
     {
