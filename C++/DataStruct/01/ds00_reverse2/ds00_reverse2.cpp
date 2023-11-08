@@ -1,0 +1,2 @@
+#include<bits/stdc++.h>
+using namespace std;void r(vector<int>&v,auto a,auto b){while(a<b)swap(*a++,*--b);}int main(){int n,a,b,c;cin>>n;vector<int> v;for(int i=0;i<n;i++){cin>>c;v.push_back(c);}cin>>a>>b;r(v,v.begin()+a,v.begin()+b+1);for(auto&x:v){cout<<x<<" ";}}
