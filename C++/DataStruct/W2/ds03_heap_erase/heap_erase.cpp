@@ -143,7 +143,16 @@ namespace CP
     void erase(const T &v)
     {
       // erase v from the heap (if exists)
-      // write your code here
+      for (int i = 0; i < mSize; i++)
+      {
+        if (mData[i] == v)
+        {
+          std::swap(mData[i], mData[--mSize]);
+          fixUp(i);
+          fixDown(i);
+          break;
+        }
+      }
     }
 
     void check_and_print()
