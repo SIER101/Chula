@@ -3,74 +3,26 @@
 
 using namespace std;
 
+int a[4], a1[4], a2[4], a3[4];
+
 int main()
 {
-    int n, a = 0, b = 0, c = 0, d = 0;
+    int n;
     cin >> n;
-    vector<int> v(n);
-    for (int i = 0; i < n; i++)
+    vector<int> v(n + 1);
+    for (int i = 1; i <= n; i++)
     {
         cin >> v[i];
-        if (v[i] == 1)
-            a++;
-        if (v[i] == 2)
-            b++;
-        if (v[i] == 3)
-            c++;
+        a[v[i]]++;
     }
-    int i = n - 1;
-    for (; i >= 0; i--)
+    for (int i = 1; i <= n; i++)
     {
-        if (c == 0)
-            break;
-        if (v[i] == 3)
-        {
-            c--;
-            continue;
-        }
-        int j = 0;
-        bool e = false;
-        if (v[i] == 2)
-        {
-            j = a;
-            e = true;
-        }
-        for (; j < i; j++)
-        {
-            if (v[j] == 3)
-            {
-                e = false;
-                break;
-            }
-        }
-        if (e)
-        {
-            for (j = 0; j < a; j++)
-            {
-                if (v[j] == 3)
-                    break;
-            }
-        }
-        swap(v[i], v[j]);
-        c--;
-        d++;
+        if (i <= a[1])
+            a1[v[i]]++;
+        else if (i <= a[1] + a[2])
+            a2[v[i]]++;
+        else
+            a3[v[i]]++;
     }
-    for (; i >= 0; i--)
-    {
-        if (b == 0)
-            break;
-        if (v[i] == 2)
-        {
-            b--;
-            continue;
-        }
-        int j = 0;
-        for (; j < i; j++)
-            if (v[j] == 2)
-                break;
-        swap(v[i], v[j]);
-        b--;
-        d++;
-    }
-    cout << d;
+    cout << a2[1] + a2[3] + (a2[1] - min(a2[1], a1[2])) + a3[1];
 }
